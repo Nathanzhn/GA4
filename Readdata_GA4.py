@@ -22,7 +22,7 @@ axP1 = axs[1,1]
 
 
 
-#axTA.plot(time, Ext_T)
+
 axTA.plot(time,TA,label='TA')
 axTA.plot(time,TB,label='TB')
 axTA.plot(time,TA,label='TC')

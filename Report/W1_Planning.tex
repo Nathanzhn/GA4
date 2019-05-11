@@ -1,0 +1,171 @@
+\documentclass[12pt]{article}
+
+\title{CUED GA4 Week1 Plan}
+\date{2019-05-11}
+\author{GA4_Group}
+
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{pdfpages}
+\usepackage[toc,page]{appendix}
+\usepackage{soul}
+\usepackage{siunitx}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+ 
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+\usepackage{booktabs}
+\usepackage[table,xcdraw]{xcolor}
+
+
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+
+
+
+
+
+%\usepackage{booktabs} % For \toprule, \midrule and \bottomrule
+%\usepackage{siunitx} % Formats the units and values
+%\usepackage{pgfplotstable} % Generates table from .csv
+%
+%% Setup siunitx:
+%\sisetup{
+%  round-mode          = places, % Rounds numbers
+%  round-precision     = 2, % to 2 places
+%}
+
+\bibliographystyle{unsrt}
+
+\begin{document}
+
+\pagenumbering{gobble}
+\pagenumbering{arabic}
+
+
+
+\tikzstyle{block} = [draw, fill=blue!20, rectangle, 
+    minimum height=3em, minimum width=6em]
+\tikzstyle{sum} = [draw, fill=blue!20, circle, node distance=1cm]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{pinstyle} = [pin edge={to-,thin,black}]
+
+
+
+
+
+
+
+%\maketitle
+%\newpage
+
+
+%\tableofcontents
+%\newpage
+
+%\begin{appendix}
+%	\listoffigures
+%	\listoftables
+%\end{appendix}
+
+
+
+\includepdf[pages=1, fitpaper, landscape=false, picturecommand={\put (\LenToUnit{.35\paperwidth},150) {};}]{coversheet.pdf}
+
+\newpage
+
+\section*{GA4 Project}
+\subsection*{1 Plan}
+
+\subsubsection{Week 1}
+
+
+
+\newpage
+\subsection*{2 Results}
+
+
+
+\par 
+\begin{figure}[htb!]
+	\centering
+    	\includegraphics[width=0.90\linewidth]{fig/performance.png}
+    	\caption{Plot Of Performance Curves, Pressure Coefficient $C_p$ VS Flow Coefficient $C_f$}
+	\label{fig:performance}
+\end{figure}
+\par
+
+
+
+\subsubsection{Week 1}
+\ul{1. Examine the experimental equipment available. What is a TEV and what does it do? How does the set up in the lab differ from that of a real installation?}
+\par 
+TEV: Thermal Expansion Valve
+
+
+
+monitor types
+H heat meter
+E Electricity meter
+F Flow meter 
+T Temperature meter
+
+monitor operating conditions
+heat source 
+heat sink including central heating flow and return T and domestic hot water T
+outdoor ambient/Weather
+air inlet temperature 
+
+
+
+additional monitoring consideration
+
+ASHP with defrost cycles had bidirectional hear meters on the total output  from the heat pump. when undergoing defrost, most ASHP operate in reverse cycle mode;they take heat from the heat sink(house) to the heat source(evaporator). Thus the net energy delivered to the heat sink is the heat output from the HP minus the heat supplied back to the heat pump during defrost.
+
+
+
+Possible consideration
+heat pump sizing
+cylinder sizing
+heat emitter
+pressure losses mainly consider the dynamic head loss(only one easy to measure)
+expansion and compression loss not adiabatic
+temperature difference in evaporator and condenser
+
+
+
+
+
+
+\newpage
+
+\begin{appendices}
+
+
+
+
+
+
+
+
+
+\end{appendices}
+
+%\begin{thebibliography}{9}
+%\end{thebibliography}
+
+
+
+\end{document}
