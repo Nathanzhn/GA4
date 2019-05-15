@@ -7,7 +7,7 @@ Created on Fri May 10 16:02:18 2019
 import numpy as np
 from matplotlib import pyplot as plt
 
-time,TA,TB,TC,TD,T1,T2,T3,T4,Dp,P1,P2 = np.loadtxt('HP_May10_05.txt', skiprows=1, unpack=True)
+time,TA,TB,TC,TD,T1,T2,T3,T4,Dp,P2,P1 = np.loadtxt('HP_May10_05.txt', skiprows=1, unpack=True)
 
 Ext_T = np.vstack((TA,TB,TC,TD)).transpose()
 R134a_T = np.vstack((T1,T2,T3,T4)).transpose()
@@ -25,8 +25,8 @@ axP1 = axs[1,1]
 
 axTA.plot(time,TA,label='TA')
 axTA.plot(time,TB,label='TB')
-axTA.plot(time,TA,label='TC')
-axTA.plot(time,TA,label='TD')
+axTA.plot(time,TC,label='TC')
+axTA.plot(time,TD,label='TD')
 axT1.plot(time,T1,label='T1')
 axT1.plot(time,T2,label='T2')
 axT1.plot(time,T3,label='T3')
