@@ -34,10 +34,10 @@ class Node(object):
         self.s = CP.PropsSI('S','T',self.t,'Q',self.x,self.fluid)
         self.p = CP.PropsSI('P','T',self.t,'Q',self.x,self.fluid)
 
-    def th(self):
+"""     def th(self):
         self.h = CP.PropsSI('H','T',self.t,'H',self.h,self.fluid)
         self.s = CP.PropsSI('S','T',self.t,'H',self.h,self.fluid)
-        self.x = CP.PropsSI('Q','T',self.t,'H',self.h,self.fluid)
+        self.x = CP.PropsSI('Q','T',self.t,'H',self.h,self.fluid) """
 
 
 
