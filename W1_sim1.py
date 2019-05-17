@@ -27,11 +27,12 @@ plt_hg  = []
 p = pt
 
 
+p1=100000
+p3=800000
 
-
-p1=1.0*p
-p3=20.0*p
-efficiency=0.9
+#p1=1.0*p
+#p3=20.0*p
+efficiency=1
 
 
 

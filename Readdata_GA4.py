@@ -35,10 +35,6 @@ axDP.plot(time, Dp,label='Dp')
 axP1.plot(time, P1,label='P1')
 axP1.plot(time, P2,label='P2')
 
-#axTA.legend(Ext_T, ('TA','TB','TC','TD'))
-#axT1.legend(R134a_T, ('T1','T2','T3','T4'))
-#axDP.legend(Dp,'Dp')
-#axP1.legend(R134a_P, ('P1','P2'))
 
 
 axi = ( {'ax':axTA,  'tit':'External Temperatures', 'ylab':'Temperature (C)'},
