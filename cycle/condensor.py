@@ -10,12 +10,18 @@ class Condensor():
         self.outletNode = outletNode
 
     def simulate(self,node):
-        "ideal"
-        node[self.idealoutletNode].px()
+        node[self.inletNode].pt()
 
         "Exp"
-        node[self.outletNode].th()
+        node[self.outletNode].x = 0.0
+        node[self.outletNode].tx()
+
+        "ideal"
+        node[self.idealoutletNode].p = node[self.inletNode].p
+        node[self.idealoutletNode].x = 0.0
+        node[self.idealoutletNode].px()
 
         "pressure loss and heat exchange parameters" # TODO
         self.dp = node[self.idealoutletNode].p - node[self.outletNode].p
+
         self.qh = node[self.inletNode].h - node[self.outletNode].h

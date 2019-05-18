@@ -1,8 +1,11 @@
 import Nodes
+from exp import *
 
 class Compressor():
 
     "compressor component"
+    
+
 
     def __init__(self,inletNode,outletNode,idealoutletNode,):
         "init compressor with node"
@@ -12,14 +15,21 @@ class Compressor():
 
 
     def simulate(self,node):
-        "ideal"
-        "assume isentropic process"
-        node[self.idealoutletNode].si = node[self.inletNode].s
-        node[self.idealoutletNode].ps()
 
+        node[self.inletNode].pt()
+  
         "Exp"
         "State 2 P2,T2 measured"
         node[self.outletNode].pt()
+
+        
+        "ideal"
+        "assume isentropic process"
+        node[self.idealoutletNode].p = p2
+        node[self.idealoutletNode].s = node[self.inletNode].s
+        node[self.idealoutletNode].ps()
+
+
         
         "evaluate compressor work and isentropic efficiency"
         self.idealwc = node[self.idealoutletNode].h - node[self.inletNode].h
