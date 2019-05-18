@@ -12,7 +12,8 @@ fluid = 'R134a'
 p1 = 100000
 p2 = 800000
 
-nodes = [Nodes.Node() for i in range(4)]
+"0-3 Exp nodes, 4-7 Ideal nodes"
+nodes = [Nodes.Node() for i in range(8)]
 nodes[0].p = p1
 nodes[0].x = 1.0
 nodes[1].p = p2
@@ -21,10 +22,10 @@ nodes[2].x = 0.0
 nodes[3].p = nodes[0].p 
 
 # 2 connect device
-c = compressor.Compressor(0, 1)
-d = condensor.Condensor(1, 2)
-t = throttle.Throttle(2, 3)
-e = evaporator.Evaporator(3,0)
+c = compressor.Compressor(0, 1, 5)
+d = condensor.Condensor(1, 2, 6)
+t = throttle.Throttle(2, 3, 7)
+e = evaporator.Evaporator(3,0, 8)
 
 nodes[0].px() 
 
