@@ -1,4 +1,5 @@
 import Nodes
+from exp import *
 
 class Evaporator():
 
@@ -10,7 +11,7 @@ class Evaporator():
         self.idealinletNode  = idealinletNode
         self.outletNode = outletNode
 
-    def simulate(self,node):
+    def simulate(self,node,mdot_a,cp,Ta_in,Ta_out):
         node[self.inletNode].th()
         
         "ideal"
@@ -22,7 +23,8 @@ class Evaporator():
 
 
         "pressure loss and heat exchange parameters" # TODO
-        self.dp = node[self.idealinletNode].p - node[self.outletNode].p
+        self.dp = node[self.inletNode].p - node[self.idealinletNode].p
         self.qc = node[self.outletNode].h - node[self.inletNode].h
-
+        self.Qca = mdot_a*cp*(Ta_in-Ta_out)
+        self.mdot_r = self.Qca/(self.qc)
     

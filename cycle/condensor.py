@@ -1,4 +1,5 @@
 import Nodes
+from exp import *
 
 class Condensor():
     "condensor component"
@@ -9,7 +10,8 @@ class Condensor():
         self.idealoutletNode  = idealoutletNode
         self.outletNode = outletNode
 
-    def simulate(self,node):
+
+    def simulate(self,node,mdot_w,shc,Tw_in,Tw_out):
         node[self.inletNode].pt()
 
         "Exp"
@@ -23,5 +25,7 @@ class Condensor():
 
         "pressure loss and heat exchange parameters" # TODO
         self.dp = node[self.idealoutletNode].p - node[self.outletNode].p
-
         self.qh = node[self.inletNode].h - node[self.outletNode].h
+        self.Qhw = mdot_w*shc*(Tw_out-Tw_in)
+        self.mdot_r = self.Qhw/(self.qh)
+        
