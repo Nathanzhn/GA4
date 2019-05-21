@@ -1,5 +1,6 @@
 import Nodes
 from exp import *
+import CoolProp.CoolProp as CP
 
 class Condensor():
     "condensor component"
@@ -14,9 +15,15 @@ class Condensor():
     def simulate(self,node,mdot_w,shc,Tw_in,Tw_out):
         node[self.inletNode].pt()
 
-        "Exp"
+        """ "Exp"
         node[self.outletNode].x = 0.0
-        node[self.outletNode].tx()
+        node[self.outletNode].tx() """
+
+        # Exp based on pressure loss in evaporator
+        p4 = CP.PropsSI('P','T',node[self.outletNode].t,'Q',0.0,fluid)
+        dp = p4 - p1
+        node[self.outletNode].p = node[self.inletNode].p -dp
+        node[self.outletNode].pt()
 
         "ideal"
         node[self.idealoutletNode].p = node[self.inletNode].p

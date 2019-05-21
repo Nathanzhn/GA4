@@ -14,7 +14,7 @@ class Throttle():
         self.outletNode = outletNode
 
     def simulate(self,node):
-        node[self.inletNode].tx()
+        node[self.inletNode].pt()
 
         "Exp"
         node[self.outletNode].h = node[self.inletNode].h

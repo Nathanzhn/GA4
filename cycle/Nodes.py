@@ -10,8 +10,6 @@ class Node(object):
         self.h = None
         self.s = None
         self.x = None
-    """ self.hf = None # TODO better way to generalise
-        self.hg = None # ... same as above """
 
     "given two properties at node, calculate the rest"
     def pt(self):
@@ -40,6 +38,7 @@ class Node(object):
 
     def th(self):
         "use T to find hg,hf, then use h to find x, hence actually tx"
+        "this is for throttle, only works in vapour dome"
         hg = CP.PropsSI('H','T',self.t,'Q',1.0,self.fluid)
         hf = CP.PropsSI('H','T',self.t,'Q',0.0,self.fluid)
         self.x = (self.h - hf)/(hg - hf)

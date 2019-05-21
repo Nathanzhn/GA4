@@ -12,8 +12,7 @@ fluid = 'R134a'
 
 
 
-"0-3 Exp nodes, 4-7 Ideal nodes"
-"for ideal p1,p2 are given"
+#0-3 Exp nodes, 4-7 Ideal nodes
 nodes = [Node() for i in range(7)]
 nodes[0].p = p1
 nodes[0].t = T1
@@ -34,36 +33,31 @@ nodes[6].p = nodes[1].p # condenser p3=p2, no pressure loss
 nodes[7].p = nodes[0].p # evaporator p4 = p1, no pressure loss
 nodes[7].h = nodes[2].h #throttle isenthalpic process """
 
-# 2 connect device
+# Connect device
 c = Compressor(0, 1, 4)
 d = Condensor(1, 2, 5)
 t = Throttle(2, 3, 6)
 e = Evaporator(3,0, 6)
 
 
-
+# simulate cycle and compute system properties
 c.simulate(nodes)    
 d.simulate(nodes,mdot_w,4200,Tw_in,Tw_out) 
 t.simulate(nodes)      
 e.simulate(nodes,mdot_a,1100,Ta_in,Ta_out)
 print(e.mdot_r)
+
+""" Carnot COP = T_h/(T_h-T_c)
+inner COP = (h2-h3)/(h2-h1)
+outer COP = mdot_w*shc*(Tw_out-Tw_in)/W_in """
+
 #print(nodes[2].p)
 #    myobj = attributes = [attr for attr in dir(nodes[2]) if not attr.startswith('__')]
-plt_hc = [nodes[i].h/1000.0 for i in range(4)]
-plt_pc = [nodes[i].p for i in range(4)]
-plt_sc = [nodes[i].s/1000.0 for i in range(4)]
-plt_tc = [(nodes[i].t-273.15) for i in range(4)]
-
-plt_hc.append(nodes[0].h/1000.0)
-plt_pc.append(nodes[0].p)
-plt_sc.append(nodes[0].s/1000.0)
-plt_tc.append(nodes[0].t-273.15)
 
 
+# Set up saturation lines for ph and Ts diagrams
 plt_pp,plt_hf,plt_hg,plt_TT,plt_sf,plt_sg = r_diagram()
-
 fig, axs = plt.subplots(1,2,figsize=(16,6))
-
 axPH = axs[0]
 axTS = axs[1]
 axPH.plot(plt_hf,plt_pp)
@@ -79,22 +73,28 @@ axTS.set_xlabel("Specific entropy (kJ/(K.kg))")
 axTS.set_ylabel('Temperature (deg. C)')
 
 
+# Plot exp nodes
+plt_hc = [nodes[i].h/1000.0 for i in range(4)]
+plt_pc = [nodes[i].p for i in range(4)]
+plt_sc = [nodes[i].s/1000.0 for i in range(4)]
+plt_tc = [(nodes[i].t-273.15) for i in range(4)]
+
+plt_hc.append(nodes[0].h/1000.0)
+plt_pc.append(nodes[0].p)
+plt_sc.append(nodes[0].s/1000.0)
+plt_tc.append(nodes[0].t-273.15)
 
 axPH.plot(plt_hc,plt_pc,'ro-')
 axTS.plot(plt_sc,plt_tc,'ro-')
 
-
+# Plot ideal component nodes
 for i in range(3):
-    
     h_i = [nodes[i].h/1000, nodes[i+4].h/1000]
     p_i = [nodes[i].p, nodes[i+4].p]
     s_i = [nodes[i].s/1000, nodes[i+4].s/1000]
     t_i = [nodes[i].t-273.15, nodes[i+4].t-273.15]    
     axPH.plot(h_i,p_i,'--')
     axTS.plot(s_i,t_i,'--')
-
-
-
 
 plt.show()  
 
