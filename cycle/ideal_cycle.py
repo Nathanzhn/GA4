@@ -45,7 +45,7 @@ c.simulate(nodes)
 d.simulate(nodes,mdot_w,4200,Tw_in,Tw_out) 
 t.simulate(nodes)      
 e.simulate(nodes,mdot_a,1100,Ta_in,Ta_out)
-print(e.mdot_r)
+print(c.eta)
 
 """ Carnot COP = T_h/(T_h-T_c)
 inner COP = (h2-h3)/(h2-h1)
