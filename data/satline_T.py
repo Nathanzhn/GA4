@@ -38,6 +38,8 @@ for i in range (1000):
     plt_sf.append (sf)
     plt_sg.append (sg)
 #ofile.close()
+
+PL.figure(figsize=(8,6))
 title = 'T-s saturation line for : ' + fluid
 PL.plot (plt_sf, plt_TT)
 PL.plot (plt_sg, plt_TT)

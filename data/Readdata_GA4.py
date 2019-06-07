@@ -7,7 +7,31 @@ Created on Fri May 10 16:02:18 2019
 import numpy as np
 from matplotlib import pyplot as plt
 
-time,TA,TB,TC,TD,T1,T2,T3,T4,Dp,P2,P1 = np.loadtxt('HP_May10_05.txt', skiprows=1, unpack=True)
+#time,TA,TB,TC,TD,T1,T2,T3,T4,Dp,P2,P1 = np.loadtxt('HP_May30_02.txt', skiprows=1, unpack=True)
+
+time,TA,TB,TC,TD,T1,T2,T3,T4,Dp,P2,P1 = np.loadtxt('p3f6.txt', skiprows=1, unpack=True)
+
+
+m_TA = np.mean(TA)
+m_TB = np.mean(TB)
+m_TC = np.mean(TC)
+m_TD = np.mean(TD)
+m_T1 = np.mean(T1)
+m_T2 = np.mean(T2)
+m_T3 = np.mean(T3)
+m_T4 = np.mean(T4)
+m_Dp = np.mean(Dp)
+m_P2 = np.mean(P2)
+m_P1 = np.mean(P1)
+
+
+
+
+
+
+
+
+
 
 Ext_T = np.vstack((TA,TB,TC,TD)).transpose()
 R134a_T = np.vstack((T1,T2,T3,T4)).transpose()
